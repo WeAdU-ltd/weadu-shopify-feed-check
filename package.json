@@ -1,0 +1,14 @@
+{
+  "name": "weadu-shopify-feed-check",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser page that checks a pasted Google Shopping feed. Local only.",
+  "license": "MIT",
+  "author": "WeAdU (https://weadu.com)",
+  "scripts": {
+    "test": "sh test.sh"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
+}
