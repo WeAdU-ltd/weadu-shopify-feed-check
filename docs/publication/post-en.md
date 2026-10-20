@@ -10,7 +10,7 @@ The Shopify Community discourages templated and AI-generated messages. Use the t
 
 Hi everyone,
 
-I work at WeAdU, a small ads agency. We made a free web page that checks a Google Shopping feed before you send it to Merchant Center: LINK
+I work at WeAdU, an ads and AI agency. We made a free web page that checks a Google Shopping feed before you send it to Merchant Center: LINK
 
 You paste your feed (the RSS, Atom, or CSV file your feed app generates in Google's format) and it lists each product's problems: empty required fields, titles over 150 characters, invalid GTIN check digits, prices of zero or without a currency, and duplicate ids. A missing brand, or a missing GTIN when there is no MPN either, shows as a warning, because some products are exempt.
 

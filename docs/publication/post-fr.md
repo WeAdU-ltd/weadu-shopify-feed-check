@@ -10,7 +10,7 @@ Le forum Shopify Community est en anglais : publier la version anglaise. Ce text
 
 Bonjour à tous,
 
-Je travaille chez WeAdU, une petite agence publicitaire. Nous avons créé une page web gratuite qui vérifie un flux Google Shopping avant son envoi à Merchant Center : LINK
+Je travaille chez WeAdU, une agence spécialisée en publicité et en IA. Nous avons créé une page web gratuite qui vérifie un flux Google Shopping avant son envoi à Merchant Center : LINK
 
 Vous collez votre flux (le fichier RSS, Atom ou CSV que votre application de flux génère au format Google) et la page liste les problèmes de chaque produit : champs obligatoires vides, titres de plus de 150 caractères, GTIN dont la clé de contrôle est fausse, prix nuls ou sans devise, identifiants en double. Une marque absente, ou un GTIN absent sans MPN, apparaît comme un avertissement, car certains produits en sont dispensés.
 
