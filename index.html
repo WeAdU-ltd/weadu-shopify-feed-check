@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeAdU Shopping feed check</title>
+  <style>
+    body { font-family: Georgia, serif; margin: 2rem auto; max-width: 52rem; line-height: 1.45; color: #1c1c1c; }
+    textarea { width: 100%; min-height: 12rem; font-family: ui-monospace, monospace; white-space: pre; overflow: auto; }
+    button { font: inherit; margin-right: 0.5rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border-bottom: 1px solid #ccc; text-align: left; vertical-align: top; padding: 0.35rem; }
+    .warn { color: #6a4b00; }
+    .err { color: #8a1f1f; }
+  </style>
+</head>
+<body>
+  <h1>Shopping feed check</h1>
+  <p>Paste a Google Shopping RSS, Atom, or CSV file. The check runs in this browser. The text is not uploaded. A clean row is not an approval from Google, and this page does not sign in to Merchant Center or Shopify.</p>
+  <textarea id="feed"></textarea>
+  <p>
+    <button id="check" type="button">Check</button>
+    <button id="sample" type="button">Load a valid row</button>
+    <button id="short" type="button">Load a short title</button>
+  </p>
+  <p id="summary"></p>
+  <table>
+    <thead>
+      <tr><th>id</th><th>Title</th><th>Findings</th><th>Suggested title</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <script src="feed.js"></script>
+  <script>
+    (function () {
+      var sample = '<?xml version="1.0"?><rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel><item><g:id>1</g:id><g:title><![CDATA[Acme Cotton Shirt]]></g:title><g:description>A cotton shirt for everyday wear.</g:description><g:link>https://shop.example/p/1</g:link><g:image_link>https://shop.example/i/1.jpg</g:image_link><g:availability>in_stock</g:availability><g:price>29.00 EUR</g:price><g:brand>Acme</g:brand><g:gtin>4006381333931</g:gtin><g:condition>new</g:condition></item></channel></rss>';
+      var box = document.getElementById("feed");
+      var summary = document.getElementById("summary");
+      var rows = document.getElementById("rows");
+
+      function cell(text) {
+        var td = document.createElement("td");
+        td.textContent = text;
+        return td;
+      }
+
+      function render(report) {
+        rows.textContent = "";
+        var feedText = report.errors.map(function (row) { return row.message; }).join(" ");
+        summary.textContent = report.counts.items + " products, " + report.counts.errors + " errors, " + report.counts.warnings + " warnings. " + feedText;
+        report.items.forEach(function (item) {
+          var tr = document.createElement("tr");
+          var findings = item.findings.map(function (row) { return row.severity + ": " + row.message; }).join("; ");
+          tr.appendChild(cell(item.id));
+          tr.appendChild(cell(item.title));
+          var findingCell = cell(findings || "No finding");
+          if (item.findings.some(function (row) { return row.severity === "error"; })) findingCell.className = "err";
+          else if (item.findings.length) findingCell.className = "warn";
+          tr.appendChild(findingCell);
+          tr.appendChild(cell(item.suggestedTitle));
+          rows.appendChild(tr);
+        });
+      }
+
+      document.getElementById("check").addEventListener("click", function () {
+        render(WeaduFeed.auditFeedText(box.value));
+      });
+      var shortRow = "id,title,description,link,image_link,availability,price,brand,gtin,condition\n9,Hat,A cotton hat for everyday wear.,https://shop.example/p/9,https://shop.example/i/9.jpg,in_stock,19.00 EUR,Acme,4006381333931,new";
+      function show(text) {
+        box.value = text;
+        render(WeaduFeed.auditFeedText(text));
+      }
+      document.getElementById("sample").addEventListener("click", function () { show(sample); });
+      document.getElementById("short").addEventListener("click", function () { show(shortRow); });
+      if (location.hash === "#sample") show(sample);
+      if (location.hash === "#short") show(shortRow);
+    })();
+  </script>
+</body>
+</html>
