@@ -121,3 +121,12 @@ test("a second check replaces the previous rows", async function () {
   assert.equal(rows(page.doc).length, 1);
   assert.equal(rows(page.doc)[0].title, "Hat");
 });
+
+test("a Shopify product export is not mapped, a Merchant Center TSV is", function () {
+  const feed = require("../feed.js");
+  const shopify = feed.auditFeedText("Handle,Title,Body (HTML),Vendor,Variant Price,Variant Barcode,Image Src\nshirt,Acme Cotton Shirt,<p>Soft</p>,Acme,29.00,4006381333931,https://cdn.example/x.jpg");
+  const codes = shopify.items[0].findings.map(function (f) { return f.code; });
+  assert.ok(codes.includes("missing_id") && codes.includes("missing_price"), "README must keep saying Shopify export columns are not read");
+  const tsv = feed.auditFeedText("id\ttitle\tdescription\tlink\timage link\tavailability\tprice\tbrand\tgtin\tcondition\n1\tAcme Cotton Shirt\tSoft.\thttps://a.example/1\thttps://a.example/1.jpg\tin stock\t29.00 EUR\tAcme\t4006381333931\tnew");
+  assert.deepEqual(tsv.items[0].findings, []);
+});
