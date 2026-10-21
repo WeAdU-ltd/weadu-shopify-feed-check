@@ -10,7 +10,7 @@ Le forum Shopify Community est en anglais : publier la version anglaise. Ce text
 
 Bonjour à tous,
 
-Je travaille chez WeAdU, une agence spécialisée en publicité et en IA. Nous avons créé une page web gratuite qui vérifie un flux Google Shopping avant son envoi à Merchant Center : LINK
+Je travaille chez WeAdU, une agence spécialisée en publicité et en IA. Nous avons créé une page web gratuite qui vérifie un flux Google Shopping avant son envoi à Merchant Center : https://weadu-ltd.github.io/weadu-shopify-feed-check/
 
 Vous collez votre flux (le fichier RSS, Atom ou CSV que votre application de flux génère au format Google) et la page liste les problèmes de chaque produit : champs obligatoires vides, titres de plus de 150 caractères, GTIN dont la clé de contrôle est fausse, prix nuls ou sans devise, identifiants en double. Une marque absente, ou un GTIN absent sans MPN, apparaît comme un avertissement, car certains produits en sont dispensés.
 
@@ -20,4 +20,4 @@ Transparence : je travaille chez WeAdU, qui a créé cette page. Elle est gratui
 
 ## B. Réponse à une personne qui demande comment vérifier son flux
 
-Bonjour [prénom], pour [son problème, par exemple « les erreurs de GTIN »], vous pouvez coller votre fichier de flux dans cette page gratuite : LINK. Elle fonctionne dans le navigateur (rien n'est envoyé) et liste, produit par produit, les champs obligatoires vides, les GTIN dont la clé de contrôle est fausse, les prix sans devise et d'autres problèmes du même type. Elle ne lit pas directement votre administration Shopify : il faut le fichier de flux généré par votre application. Transparence : je travaille chez WeAdU, qui l'a créée ; elle est gratuite.
+Bonjour [prénom], pour [son problème, par exemple « les erreurs de GTIN »], vous pouvez coller votre fichier de flux dans cette page gratuite : https://weadu-ltd.github.io/weadu-shopify-feed-check/. Elle fonctionne dans le navigateur (rien n'est envoyé) et liste, produit par produit, les champs obligatoires vides, les GTIN dont la clé de contrôle est fausse, les prix sans devise et d'autres problèmes du même type. Elle ne lit pas directement votre administration Shopify : il faut le fichier de flux généré par votre application. Transparence : je travaille chez WeAdU, qui l'a créée ; elle est gratuite.

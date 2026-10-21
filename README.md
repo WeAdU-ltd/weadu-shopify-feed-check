@@ -1,5 +1,7 @@
 # WeAdU Shopping feed check (browser page)
 
+Live page: https://weadu-ltd.github.io/weadu-shopify-feed-check/
+
 A single web page that checks a Google Shopping product feed you paste into it, and lists each product's problems. It is made with Shopify merchants in mind, but works with any feed in Google's format.
 
 The check runs in your browser. The page loads no remote file and sends nothing: you can even open it offline.
