@@ -1,3 +1,12 @@
+> **Archived project.** This repository is no longer maintained and will not be published to any store. Free tools already cover this need better:
+>
+> - [FeedArc Google Shopping feed validator](https://www.feedarc.com/tools/google-shopping-feed-validator)
+> - [Grigora product feed validator](https://www.grigora.co/tools/product-feed-validator/)
+> - [AnyTool merchant feed validator](https://www.anytool.tech/merchant-feed-validator)
+> - [HERE feed validator](https://here.se/en/feed-validator/)
+>
+> The code stays available under its license, as is.
+
 # WeAdU Shopping feed check (browser page)
 
 Live page: https://weadu-ltd.github.io/weadu-shopify-feed-check/
